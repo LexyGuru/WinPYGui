@@ -1,0 +1,33 @@
+{
+  "_comment_": [
+    "Language Database"
+  ],
+  "eng": [
+    {
+      "Menu": {
+        "Version": "Version",
+        "SystemInfo":"System Info",
+        "Configure": "Configure",
+        "Exit": "Exit",
+        "WinUtils": "Windows Utils",
+        "Help": "Help",
+
+        "utilities": "Utilities",
+        "Weather": "Weather"
+      },
+
+      "Weather": {
+        "Weather_for" : "Weather for:",
+        "Now": "Now:",
+        "Temperature_now": "Temperature now:",
+        "Description": "Description:",
+        "Precipitation": "Precipitation:",
+        "Humidity": "Humidity:",
+        "Wind": "Wind:",
+        "Next_days": "Next days:",
+        "Max_temperature": "Max temperature:",
+        "Min_temperature": "Min temperature:"
+      }
+    }
+  ]
+}
