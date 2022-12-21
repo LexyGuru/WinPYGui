@@ -10,14 +10,21 @@ from tkinter import messagebox
 from tkinter import Tk, Button, Frame
 from tkinter.scrolledtext import ScrolledText
 from datetime import datetime
+
+import requests
 from django.utils.version import get_version
 
 VERSION = (1, 0, 1, 'beta', 2022) # ("alpha", "beta", "rc", "final")
+__version__ = get_version(VERSION)
 
 response = open('config.json', encoding='utf-8')
 data_jsonq = json.loads(response.read())
 
-__version__ = get_version(VERSION)
+url = 'https://raw.githubusercontent.com/LexyGuru/WinPYGui/main/config.json'
+x = requests.get(url)
+ver = x.json()['verzion']
+VERSION1 = ver
+__version1__ = get_version(VERSION1)
 
 ROOT_DIR = os.path.abspath(os.curdir)
 
