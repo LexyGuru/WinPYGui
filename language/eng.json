@@ -5,7 +5,7 @@
   "eng": [
     {
       "Menu": {
-        "Version": "Version",
+        "Version": "UPDATE",
         "SystemInfo":"System Info",
         "Configure": "Configure",
         "Exit": "Exit",
@@ -27,7 +27,21 @@
         "Next_days": "Next days:",
         "Max_temperature": "Max temperature:",
         "Min_temperature": "Min temperature:"
+      },
+
+      "Apps": {
+        "Apps" : "Web lista",
+        "Apps_Torrent" : "Torrent software",
+        "Apps_Media_Server" : "Media Server",
+        "Apps_Video_Editor" : "Apps Video Editor"
+      },
+
+      "Update": {
+        "NoUpdate": "Current Edition",
+        "NewUpdate": "New release on GitHub",
+        "ErrorUpdate": "Update Error"
       }
+
     }
   ]
 }

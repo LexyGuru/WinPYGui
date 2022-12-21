@@ -3,6 +3,7 @@ import tkinter as tk
 import os
 import pytz
 import sys
+import subprocess
 
 from tkinter import *
 from tkinter import ttk
@@ -10,23 +11,33 @@ from tkinter import messagebox
 from tkinter import Tk, Button, Frame
 from tkinter.scrolledtext import ScrolledText
 from datetime import datetime
+# from django.utils.version import get_version
 
-import requests
-from django.utils.version import get_version
+def get_most_recent_git_tag():
+    try:
+        git_tag = str(
+            subprocess.check_output(['git', 'describe', '--abbrev=0'], stderr=subprocess.STDOUT)
+        ).strip('\'b\\n')
+    except subprocess.CalledProcessError as exc_info:
+        raise Exception(str(exc_info.output))
+    return git_tag
 
-VERSION = (1, 0, 1, 'beta', 2022) # ("alpha", "beta", "rc", "final")
-__version__ = get_version(VERSION)
+'''with open('config.json', 'r+') as f:
+    json_data = json.load(f)
+    json_data['verzion'] = get_most_recent_git_tag()
+    f.seek(0)
+    f.write(json.dumps(json_data))
+    f.truncate()'''
+
+
+'''VERSION = (1, 0, 1, 'beta', 2022) # ("alpha", "beta", "rc", "final")
+__version__ = get_version(VERSION)'''
 
 response = open('config.json', encoding='utf-8')
 data_jsonq = json.loads(response.read())
-
-url = 'https://raw.githubusercontent.com/LexyGuru/WinPYGui/main/config.json'
-x = requests.get(url)
-ver = x.json()['verzion']
-VERSION1 = ver
-__version1__ = get_version(VERSION1)
-
 ROOT_DIR = os.path.abspath(os.curdir)
+
+__verzion__ = data_jsonq['verzion']
 
 def configure():
     import subprocess as sp
@@ -49,8 +60,33 @@ else:
     messagebox.showwarning("Warning", "'" + lang + "'" + " Language File Not Found!!!")
 
 
+def verzion():
+    global verzion
+    if __verzion__ < get_most_recent_git_tag():
+        def ver_update_git():
+            import webbrowser
+            webbrowser.open("https://github.com/LexyGuru/WinPYGui/releases")
+        ver = Label(my_windows, text=data_lang_json[lang][0]['Update']['NewUpdate'], font=('Ethnocentric', 15), fg='red')
+        ver.pack(anchor='s')
+        my_dropdown_menu_github = tk.Menu(my_menubar, tearoff=0)
+        my_dropdown_menu_github.add_command(label=data_lang_json[lang][0]['Menu']['Downloads'], command=ver_update_git)
+        my_menubar.add_cascade(label=data_lang_json[lang][0]['Menu']['Version'], menu=my_dropdown_menu_github)
+
+
+    if __verzion__ == get_most_recent_git_tag():
+        print("no update")
+
+        ver = Label(my_windows, text=data_lang_json[lang][0]['Update']['NoUpdate'], font=('Ethnocentric', 15), fg='green')
+        ver.pack(anchor='s')
+
+    if __verzion__ > get_most_recent_git_tag():
+        print("update error")
+
+        ver = Label(my_windows, text=data_lang_json[lang][0]['Update']['ErrorUpdate'], font=('Ethnocentric', 15), fg='red')
+        ver.pack(anchor='s')
+
 my_windows = tk.Tk()
-my_windows.title('WindowsGuiPY')
+my_windows.title('WindowsGuiPY' + " " + data_jsonq['verzion'])
 my_windows.minsize(700, 400)
 my_windows.geometry('800x400')
 my_menubar = tk.Menu(my_windows)
@@ -187,31 +223,11 @@ time_label = Label(my_windows, font = 'calibri 30 bold', foreground = 'black')
 time_label.pack(anchor='center')
 date_label = Label(my_windows, font = 'calibri 30 bold', foreground = 'black')
 date_label.pack(anchor='s')
-ver = Label(my_windows, text=(__version__ + " " + data_lang_json[lang][0]['Menu']['Version']), font=('Ethnocentric', 15), fg='red')
-ver.pack(anchor='s')
+# ver = Label(my_windows, text=(__version__ + " " + data_lang_json[lang][0]['Menu']['Version']), font=('Ethnocentric', 15), fg='red')
+'''ver = Label(my_windows, text=verzion(), font=('Ethnocentric', 15))
+ver.pack(anchor='s')'''
+verzion()
 clock()
-
-def ver_ch():
-    main_frame = Frame(my_windows)
-    main_frame.pack(fill=BOTH, expand=1)
-    my_canvas = Canvas(main_frame)
-    my_canvas.pack(side=LEFT, fill=BOTH, expand=1)
-    my_scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=my_canvas.yview)
-    my_scrollbar.pack(side=RIGHT, fill=Y)
-    my_canvas.configure(yscrollcommand=my_scrollbar.set)
-    my_canvas.bind('<Configure>', lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))
-    second_frame = Frame(my_canvas)
-    my_canvas.create_window((0, 0), window=second_frame, anchor="nw")
-
-    label = Label(second_frame, text=(__version__), font=('Ethnocentric', 15), fg='red')
-    label.pack()
-
-    def clear():
-        main_frame.destroy()
-        button2.destroy()
-
-    button2 = Button(second_frame, text="Clear", command=clear)
-    button2.pack(side=BOTTOM)
 
 def systeminfo():
     my_windows = tk.Tk()
@@ -663,12 +679,6 @@ class apps:
 
         Button(ws, text="Show Selected", command=showSelected).pack()
 
-my_dropdown_menu_help = tk.Menu(my_menubar, tearoff=0)
-my_dropdown_menu_help.add_command(label='Verzio', command=ver_ch)
-my_dropdown_menu_help.add_command(label=data_lang_json[lang][0]['Menu']['Configure'], command=configure)
-my_dropdown_menu_help.add_command(label=data_lang_json[lang][0]['Menu']['Exit'], command=exits)
-my_menubar.add_cascade(label=data_lang_json[lang][0]['Menu']['Help'], menu=my_dropdown_menu_help)
-
 my_dropdown_menu_utils = tk.Menu(my_menubar, tearoff=0)
 my_dropdown_menu_utils.add_command(label=data_lang_json[lang][0]['Menu']['SystemInfo'], command=systeminfo)
 my_dropdown_menu_utils.add_command(label=data_lang_json[lang][0]['Menu']['Weather'], command=weather_google)
@@ -679,6 +689,11 @@ my_dropdown_menu_apps.add_command(label=data_lang_json[lang][0]['Apps']['Apps_To
 my_dropdown_menu_apps.add_command(label=data_lang_json[lang][0]['Apps']['Apps_Media_Server'], command=apps.apps_media_server)
 my_dropdown_menu_apps.add_command(label=data_lang_json[lang][0]['Apps']['Apps_Video_Editor'], command=apps.apps_video_editor)
 my_menubar.add_cascade(label=data_lang_json[lang][0]['Apps']['Apps'], menu=my_dropdown_menu_apps)
+
+my_dropdown_menu_help = tk.Menu(my_menubar, tearoff=0)
+my_dropdown_menu_help.add_command(label=data_lang_json[lang][0]['Menu']['Configure'], command=configure)
+my_dropdown_menu_help.add_command(label=data_lang_json[lang][0]['Menu']['Exit'], command=exits)
+my_menubar.add_cascade(label=data_lang_json[lang][0]['Menu']['Help'], menu=my_dropdown_menu_help)
 
 my_windows.config(menu=my_menubar)
 my_windows.mainloop()
