@@ -480,7 +480,7 @@ class apps:
                     import webbrowser
                     webbrowser.open("https://sourceforge.net/projects/halite/")
 
-        show = Label(ws, text="Select Your Country", font=("Times", 14), padx=10, pady=10)
+        show = Label(ws, text="Select Your apps", font=("Times", 14), padx=10, pady=10)
         show.pack()
 
         lb = Listbox(ws, selectmode="multiple")
@@ -589,7 +589,7 @@ class apps:
                     import webbrowser
                     webbrowser.open("https://ampache.org/")
 
-        show = Label(ws, text="Select Your Country", font=("Times", 14), padx=10, pady=10)
+        show = Label(ws, text="Select Your apps", font=("Times", 14), padx=10, pady=10)
         show.pack()
 
         lb = Listbox(ws, selectmode="multiple")
@@ -660,7 +660,7 @@ class apps:
                     import webbrowser
                     webbrowser.open("https://fxhome.com/product/hitfilm?utmzz=utmccn%3D%28not+set%29&webuid=whrz1p")
 
-        show = Label(ws, text="Select Your Country", font=("Times", 14), padx=10, pady=10)
+        show = Label(ws, text="Select Your apps", font=("Times", 14), padx=10, pady=10)
         show.pack()
 
         lb = Listbox(ws, selectmode="multiple")
