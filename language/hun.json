@@ -5,7 +5,8 @@
   "hun": [
     {
       "Menu": {
-        "Version": "Verzió",
+        "Version": "UPDATE",
+        "Downloads": "Letöltés",
         "SystemInfo":"Rendszerinfó",
         "Configure": "Beállítások",
         "Exit": "Kilépés",
@@ -34,6 +35,12 @@
         "Apps_Torrent" : "Torrent szoftverek",
         "Apps_Media_Server" : "Media Szerverk",
         "Apps_Video_Editor" : "Apps Video Szerkesztö"
+      },
+
+      "Update": {
+        "NoUpdate": "Aktuális kiadás",
+        "NewUpdate": "Új kiadás a GitHub-on",
+        "ErrorUpdate": "Frissítési hiba"
       }
 
     }

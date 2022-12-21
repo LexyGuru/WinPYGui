@@ -5,7 +5,7 @@
   "de": [
     {
       "Menu": {
-        "Version": "Version",
+        "Version": "UPDATE",
         "SystemInfo":"Systeminformationen",
         "Configure": "Konfigurieren",
         "Exit": "Exit",
@@ -27,7 +27,21 @@
         "Next_days": "Nächsten Tage:",
         "Max_temperature": "Maximale Temperatur:",
         "Min_temperature": "Mindesttemperatur:"
+      },
+
+      "Apps": {
+        "Apps" : "Web lista",
+        "Apps_Torrent" : "Torrent Software",
+        "Apps_Media_Server" : "Medienserver",
+        "Apps_Video_Editor" : "Apps Video Editor"
+      },
+
+      "Update": {
+        "NoUpdate": "Aktuelle Ausgabe",
+        "NewUpdate": "Aktuelle Ausgabe",
+        "ErrorUpdate": "Aktualisierungsfehler"
       }
+
     }
   ]
 }
