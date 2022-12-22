@@ -29,6 +29,11 @@
         "Min_temperature": "Mindesttemperatur:"
       },
 
+      "Weblink" :{
+        "Select_Your_Apps" : "Wählen sie ihre apps aus",
+        "Show_Selected" : "Ausgewählte anzeigen"
+      },
+
       "Apps": {
         "Apps" : "Web lista",
         "Apps_Torrent" : "Torrent Software",
@@ -40,6 +45,11 @@
         "NoUpdate": "Aktuelle Ausgabe",
         "NewUpdate": "Aktuelle Ausgabe",
         "ErrorUpdate": "Aktualisierungsfehler"
+      },
+
+      "Games": {
+        "Games": "Spiele App",
+        "Game_Launcher": "Game Launcher"
       }
 
     }

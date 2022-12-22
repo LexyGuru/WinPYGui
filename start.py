@@ -480,7 +480,7 @@ class apps:
                     import webbrowser
                     webbrowser.open("https://sourceforge.net/projects/halite/")
 
-        show = Label(ws, text="Select Your apps", font=("Times", 14), padx=10, pady=10)
+        show = Label(ws, text=data_lang_json[lang][0]['Weblink']['Select_Your_Apps'], font=("Times", 14), padx=10, pady=10)
         show.pack()
 
         lb = Listbox(ws, selectmode="multiple")
@@ -506,7 +506,7 @@ class apps:
             lb.insert(END, torrent[item])
             lb.itemconfig(item, bg="#bdc1d6")
 
-        Button(ws, text="Show Selected", command=showSelected).pack()
+        Button(ws, text=data_lang_json[lang][0]['Weblink']['Show_Selected'], command=showSelected).pack()
 
     @staticmethod
     def apps_media_server():
@@ -589,7 +589,7 @@ class apps:
                     import webbrowser
                     webbrowser.open("https://ampache.org/")
 
-        show = Label(ws, text="Select Your apps", font=("Times", 14), padx=10, pady=10)
+        show = Label(ws, text=data_lang_json[lang][0]['Weblink']['Select_Your_Apps'], font=("Times", 14), padx=10, pady=10)
         show.pack()
 
         lb = Listbox(ws, selectmode="multiple")
@@ -616,7 +616,7 @@ class apps:
             lb.insert(END, torrent[item])
             lb.itemconfig(item, bg="#bdc1d6")
 
-        Button(ws, text="Show Selected", command=showSelected).pack()
+        Button(ws, text=data_lang_json[lang][0]['Weblink']['Show_Selected'], command=showSelected).pack()
 
     @staticmethod
     def apps_video_editor():
@@ -660,7 +660,7 @@ class apps:
                     import webbrowser
                     webbrowser.open("https://fxhome.com/product/hitfilm?utmzz=utmccn%3D%28not+set%29&webuid=whrz1p")
 
-        show = Label(ws, text="Select Your apps", font=("Times", 14), padx=10, pady=10)
+        show = Label(ws, text=data_lang_json[lang][0]['Weblink']['Select_Your_Apps'], font=("Times", 14), padx=10, pady=10)
         show.pack()
 
         lb = Listbox(ws, selectmode="multiple")
@@ -677,7 +677,69 @@ class apps:
             lb.insert(END, torrent[item])
             lb.itemconfig(item, bg="#bdc1d6")
 
-        Button(ws, text="Show Selected", command=showSelected).pack()
+        Button(ws, text=data_lang_json[lang][0]['Weblink']['Show_Selected'], command=showSelected).pack()
+
+class games:
+    @staticmethod
+    def game_launcher():
+        ws = Tk()
+        ws.title('Game Apps')
+        ws.geometry('400x300')
+
+        var = StringVar()
+
+        def showSelected():
+            countries = []
+            cname = lb.curselection()
+            for i in cname:
+                op = lb.get(i)
+                countries.append(op)
+            for val in countries:
+                # print(val)
+
+                if val == "Electronics Arts":
+                    import webbrowser
+                    webbrowser.open("https://www.ea.com/ea-app")
+
+                if val == "Steam":
+                    import webbrowser
+                    webbrowser.open("https://store.steampowered.com/")
+
+                if val == "Epic Games":
+                    import webbrowser
+                    webbrowser.open("https://www.epicgames.com/site/de/home")
+
+                if val == "Battle.net":
+                    import webbrowser
+                    webbrowser.open("https://www.blizzard.com/en-us/apps/battle.net/desktop")
+
+                if val == "Microsoft Game Pass":
+                    import webbrowser
+                    webbrowser.open("https://www.xbox.com/en-US/xbox-game-pass/pc-game-pass")
+
+                if val == "Ubisoft":
+                    import webbrowser
+                    webbrowser.open("https://ubisoftconnect.com/")
+
+        show = Label(ws, text=data_lang_json[lang][0]['Weblink']['Select_Your_Apps'], font=("Times", 14), padx=10, pady=10)
+        show.pack()
+
+        lb = Listbox(ws, selectmode="multiple")
+        lb.pack(padx=10, pady=10, expand=YES, fill="both")
+
+        torrent = ["Electronics Arts",
+                   "Steam",
+                   "Epic Games",
+                   "Battle.net",
+                   "Microsoft Game Pass",
+                   "Ubisoft"]
+
+        for item in range(len(torrent)):
+            lb.insert(END, torrent[item])
+            lb.itemconfig(item, bg="#bdc1d6")
+
+        Button(ws, text=data_lang_json[lang][0]['Weblink']['Show_Selected'], command=showSelected).pack()
+
 
 my_dropdown_menu_utils = tk.Menu(my_menubar, tearoff=0)
 my_dropdown_menu_utils.add_command(label=data_lang_json[lang][0]['Menu']['SystemInfo'], command=systeminfo)
@@ -689,6 +751,11 @@ my_dropdown_menu_apps.add_command(label=data_lang_json[lang][0]['Apps']['Apps_To
 my_dropdown_menu_apps.add_command(label=data_lang_json[lang][0]['Apps']['Apps_Media_Server'], command=apps.apps_media_server)
 my_dropdown_menu_apps.add_command(label=data_lang_json[lang][0]['Apps']['Apps_Video_Editor'], command=apps.apps_video_editor)
 my_menubar.add_cascade(label=data_lang_json[lang][0]['Apps']['Apps'], menu=my_dropdown_menu_apps)
+
+my_dropdown_menu_games = tk.Menu(my_menubar, tearoff=0)
+my_dropdown_menu_games.add_command(label=data_lang_json[lang][0]['Games']['Game_Launcher'], command=games.game_launcher)
+my_menubar.add_cascade(label=data_lang_json[lang][0]['Games']['Games'], menu=my_dropdown_menu_games)
+
 
 my_dropdown_menu_help = tk.Menu(my_menubar, tearoff=0)
 my_dropdown_menu_help.add_command(label=data_lang_json[lang][0]['Menu']['Configure'], command=configure)

@@ -30,6 +30,11 @@
         "Min_temperature": "Max hőmérséklet:"
       },
 
+      "Weblink" :{
+        "Select_Your_Apps" : "Válassza ki az ön alkalmazásait",
+        "Show_Selected" : "Kijelöltek megjelenítése"
+      },
+
       "Apps": {
         "Apps" : "Web lista",
         "Apps_Torrent" : "Torrent szoftverek",
@@ -41,6 +46,11 @@
         "NoUpdate": "Aktuális kiadás",
         "NewUpdate": "Új kiadás a GitHub-on",
         "ErrorUpdate": "Frissítési hiba"
+      },
+
+      "Games": {
+        "Games": "Játék alkalmazások",
+        "Game_Launcher": "Játékindító"
       }
 
     }

@@ -29,6 +29,11 @@
         "Min_temperature": "Min temperature:"
       },
 
+       "Weblink" :{
+        "Select_Your_Apps" : "Select Your Apps",
+        "Show_Selected" : "Show Selected"
+      },
+
       "Apps": {
         "Apps" : "Web lista",
         "Apps_Torrent" : "Torrent software",
@@ -40,6 +45,11 @@
         "NoUpdate": "Current Edition",
         "NewUpdate": "New release on GitHub",
         "ErrorUpdate": "Update Error"
+      },
+
+      "Games": {
+        "Games": "Game Appok",
+        "Game_Launcher": "Game Launcher"
       }
 
     }
