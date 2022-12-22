@@ -6,12 +6,10 @@ import sys
 import subprocess
 
 from tkinter import *
-from tkinter import ttk
 from tkinter import messagebox
-from tkinter import Tk, Button, Frame
+from tkinter import Tk, Button
 from tkinter.scrolledtext import ScrolledText
 from datetime import datetime
-# from django.utils.version import get_version
 
 def get_most_recent_git_tag():
     try:
